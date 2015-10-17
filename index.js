@@ -36,5 +36,5 @@ io.on('connection', function(socket){
   	});
 });
 
-var server = http.createServer(app).listen(80);
+var server = http.createServer(app).listen(process.env.PORT);
 io.listen(server);
