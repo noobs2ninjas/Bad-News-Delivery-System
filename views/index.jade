@@ -1,0 +1,47 @@
+doctype
+html
+	include layout/head.jade
+	style.
+		.container-fluid{
+		margin-top:20px;
+		}
+	body
+		.container-fluid
+			.row
+				.column-xs-12.col-sm-6.col-sm-offset-3
+					.well
+						h2 Bad News Delivery Sytem
+						p Please enter your phone number and message in the form below. The system will be delivering it via Automatic voice response. It will be delivered in the 3rd person so please write your message as such. 
+						form#callform(name="callform")
+							.form-group
+								.form-control-wrapper
+									input#phone.form-control.empty(type="text" name="phone")
+									.floating-label Phone Number
+							.form-group
+									textarea#message.form-control(name="message")
+							button#submit.btn.btn-primary(type="submit" value="submit") Submit
+
+	script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+	script(src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js")
+	script(src="js/material.min.js")
+	script(src="js/ripples.min.js")
+
+	script.
+		$(document).ready(function(){
+			$.material.init();
+			$('#callform').submit(function(event){
+				event.preventDefault();
+				var phoneNumber = $('#phone').val;
+				var usersmessage = $('#message').html;
+			$.ajax({
+					url:"/call",
+					data:{
+						phone: phoneNumber,
+						message: usersmessage
+					},
+					success: function (data){
+					
+					}
+				});
+			});
+		});
