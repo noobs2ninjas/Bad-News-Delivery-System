@@ -36,5 +36,5 @@ io.on('connection', function(socket){
   	});
 });
 
-var server = http.createServer(app).listen(3000);
+var server = http.createServer(app).listen(80);
 io.listen(server);
